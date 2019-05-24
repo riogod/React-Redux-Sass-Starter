@@ -9,4 +9,8 @@ export const INCREMENT_NUM = "INCREMENT_NUM";
 export const DECREMENT_NUM = "DECREMENT_NUM";
 export const RESET = "RESET";
 
+
+export const SELECTED_CONTENT = "SELECTED_CONTENT";
+export const SEARCH_PHRASE = "SEARCH_PHRASE";
+
 /* eslint-enable */

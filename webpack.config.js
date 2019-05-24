@@ -27,12 +27,17 @@ module.exports = {
           presets: ["react", "stage-0", "es2015"],
           plugins: ["transform-class-properties", "transform-decorators-legacy"]
         }
+      },
+      {
+        test: /\.(gif|svg|jpg|png)$/,
+        loader: "file-loader",
       }
     ]
   },
   devServer: {
     contentBase: "./public/",
-    watchContentBase: true
+    watchContentBase: true,
+    historyApiFallback: true
   },
   plugins: [
     new ExtractTextPlugin("bundle.css"),

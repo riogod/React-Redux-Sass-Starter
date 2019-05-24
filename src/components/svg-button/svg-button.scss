@@ -1,0 +1,51 @@
+.header-button
+{
+  & svg {
+    cursor: pointer;
+    fill: rgba(0, 0, 0, 0.78);
+    transition: all, .3s;
+
+
+    circle {
+      fill: rgba(192, 29, 39, 0);
+      cursor: pointer;
+    }
+
+    &:hover circle {
+      fill: rgba(0, 0, 0, 0.05);
+    }
+
+    &:hover {
+      fill: #ff4346;
+    }
+
+  }
+
+
+  &:hover {
+    text-decoration: none;
+
+  }
+}
+
+.active {
+
+  & svg {
+    fill: rgba(255, 85, 87, 0.38);
+    cursor: default;
+
+    circle {
+      fill: rgba(0, 0, 0, 0.05);
+      cursor: default;
+    }
+
+    &:hover circle {
+      fill: rgba(0, 0, 0, 0.05);
+    }
+
+    &:hover {
+      fill: rgba(255, 85, 87, 0.38);
+    }
+  }
+
+}
