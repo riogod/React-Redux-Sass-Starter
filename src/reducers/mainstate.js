@@ -1,4 +1,4 @@
-import { SELECTED_CONTENT, SEARCH_PHRASE } from "../constants/ActionTypes";
+import { SELECTED_CONTENT, SEARCH_PHRASE, SET_CURRENT_CATEGORY_ID } from "../constants/ActionTypes";
 
 
 const initialState = {
@@ -16,6 +16,9 @@ export default function reducer(state = initialState, action) {
          case SEARCH_PHRASE:
             return {...state,
                 search_phrase: action.payload};
+         case SET_CURRENT_CATEGORY_ID:
+            return {...state,
+                current_category_id: action.payload};
 
     }
 

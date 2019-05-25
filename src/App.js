@@ -17,6 +17,7 @@ class App extends Component {
         <div className="content">
           <Switch>
             <Route exact path='/' component={Catalog}/>
+            <Route exact path='/catalog' component={Catalog}/>
             <Route path='/catalog/:number' component={Catalog}/>
             <Route path='/statistic'><ModStatistic/></Route>
             <Route path='/settings'><ModSettings/></Route>

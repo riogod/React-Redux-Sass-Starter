@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import CatalogHeader from "../containers/Catalog-header";
 import JIApi from "../services/serverAPI";
+import CatalogItemCard from "./Catalog-item-card";
 
 
 
@@ -9,10 +10,11 @@ import JIApi from "../services/serverAPI";
 class Catalog extends Component {
 
     jiData = new JIApi();
+    categoryId = this.props.match.params.number;
+
 
     constructor(props) {
         super(props);
-        this.updateCategory();
 
         this.state = {
             itemList: null
@@ -22,7 +24,7 @@ class Catalog extends Component {
 
     updateCategory() {
         const { search_phrase } = this.props.main_state;
-        const catalogId = (this.props.match.params.number >= 0) ? this.props.match.params.number : 0;
+        const catalogId = (this.categoryId >= 0) ? this.categoryId : 0;
 
         this.jiData.getCatalogData(catalogId, search_phrase.toLowerCase()).then((item) => {
             this.setState({
@@ -31,25 +33,38 @@ class Catalog extends Component {
         });
     }
 
+    catalogList(arr) {
+        return !arr ? null : arr.map(({id, title, description}) => {
+            return (
+              <CatalogItemCard key={id} title={title} description={description} id={id} actionClick={this.categoryClick}/>
+            );
+        });
+    }
+
 
     componentDidMount()     {
-        const { setViewContent } = this.props;
+        const { setViewContent, setCurrentCategory } = this.props;
+        this.updateCategory();
+        setCurrentCategory(this.categoryId);
         setViewContent("catalog");
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.props.match.params.number !== prevProps.match.params.number || this.props.main_state.search_phrase !== prevProps.main_state.search_phrase) {
+        if(this.categoryId !== prevProps.match.params.number || this.props.main_state.search_phrase !== prevProps.main_state.search_phrase) {
             this.updateCategory();
         }
     }
 
 
     render() {
+        // console.error("test");
         console.log(this.props);
         return (
           <React.Fragment>
             <CatalogHeader/>
-qweqwe
+            <div className="category-cards">
+              {this.catalogList(this.state.itemList)}
+            </div>
           </React.Fragment>
         );
     }
@@ -58,9 +73,11 @@ qweqwe
 Catalog.propTypes = {
     selected_content: PropTypes.string,
     setViewContent: PropTypes.func,
+    setCurrentCategory: PropTypes.func,
     main_state: PropTypes.array,
+    number: PropTypes.number,
     match: PropTypes.array,
-    number: PropTypes.number
+    categoryId: PropTypes.number
 };
 
 

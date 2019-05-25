@@ -7,7 +7,12 @@ import PropTypes from "prop-types";
 class Search extends Component {
 
 
-
+    componentDidMount() {
+        const inputClass = (this.props.main_state.search_phrase !== "");
+        if(inputClass) {
+            document.getElementById("clear-input").style.display = "block";
+        }
+    }
 
     hoverIn(el = this.props)  {
 
@@ -48,20 +53,25 @@ class Search extends Component {
         el.parentElement.querySelector("input").value = "";
         el.parentElement.querySelector("input").focus();
         setSearchPhrase("");
+        document.getElementById("clear-input").style.display = "none";
     }
 
 
 
     render() {
+        const inputClass = (this.props.main_state.search_phrase !== "");
+        // if(inputClass) {
+        //     document.getElementById("clear-input").style.display = "block";
+        // }
 
 
         return (
-          <div className="search-field search-in"
+          <div className={(inputClass) ? "search-field search-in animate-in" : "search-field search-in"}
                onMouseEnter={(e) => this.hoverIn(e.target)}
                onMouseLeave={(e) => this.hoverOut(e.target)}
 
                onBlur={(e) => this.hoverOut(e.target)}>
-            <input type="text" className="search-field" placeholder="Type here to search..."
+            <input type="text" value={this.props.main_state.search_phrase} className="search-field" placeholder="Type here to search..."
                    onChange={(e) => this.onChangeEl(e.target)}
                 />
             <div id="clear-input" onClick={(e) => this.ClearSearch(e.target)}/>
