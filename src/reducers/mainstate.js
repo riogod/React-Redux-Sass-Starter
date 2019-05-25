@@ -4,8 +4,7 @@ import { SELECTED_CONTENT, SEARCH_PHRASE } from "../constants/ActionTypes";
 const initialState = {
     selected_content: "catalog",
     search_phrase: "",
-    test: 2,
-    act: true
+    current_category_id: 0
 };
 
 

@@ -19,7 +19,7 @@ class Header extends Component {
 
     render() {
             const {selected_content} = this.props.main_state;
-        console.log(this.props);
+        // console.log(this.props);
         return (
           <div className="header">
             <LinkWrapper active_content={(selected_content === "catalog")} to={"/"}><div  className="logo">JInterview</div> </LinkWrapper>

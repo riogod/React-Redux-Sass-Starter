@@ -7,7 +7,9 @@ import Catalog from "../components/Catalog";
 
 export class ModCatalogController extends Component {
 
+
   render() {
+
     return (
       <Catalog {...this.props}/>
     );

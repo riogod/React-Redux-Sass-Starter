@@ -16,7 +16,7 @@ export default class SvgButton extends Component {
                     return (
                       <React.Fragment>
                         <circle cx={this.props.width/2} cy={this.props.height/2} r={this.props.width/2} />
-                        <use x="8" y="8" width={this.props.width-15} height={this.props.height-15} xlinkHref={`${ico}#${this.props.icon}`} />
+                        <use x="8" y="8" width={this.props.width-15} height={this.props.height-15} xlinkHref={`/${ico}#${this.props.icon}`} />
                       </React.Fragment>
                     );
             default:

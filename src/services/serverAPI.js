@@ -1,3 +1,5 @@
+import "babel-polyfill";
+
 export default class JIApi {
     _apiBase = "http://localhost:3004";
 

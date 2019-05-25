@@ -16,7 +16,8 @@ class App extends Component {
         <Header />
         <div className="content">
           <Switch>
-            <Route exact path='/'><Catalog/></Route>
+            <Route exact path='/' component={Catalog}/>
+            <Route path='/catalog/:number' component={Catalog}/>
             <Route path='/statistic'><ModStatistic/></Route>
             <Route path='/settings'><ModSettings/></Route>
           </Switch>
