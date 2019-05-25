@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
  class CatalogItemCard extends Component {
     render() {
         return (
-          <Link className="catalog-item" to={"/catalog/1"} >
+          <Link className="catalog-item" to={`/catalog/${this.props.id}`} >
             <div className="additional"/>
             <div className="catalog-item__left">
               <div className="title">{this.props.title}</div>

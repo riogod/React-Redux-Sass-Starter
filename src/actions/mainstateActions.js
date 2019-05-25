@@ -8,7 +8,7 @@
 import { SELECTED_CONTENT, SEARCH_PHRASE, SET_CURRENT_CATEGORY_ID } from "../constants/ActionTypes";
 
 export function setViewContent(payload) {
-
+  console.log(SELECTED_CONTENT);
   return {
     type: SELECTED_CONTENT,
     payload: payload
@@ -16,7 +16,7 @@ export function setViewContent(payload) {
 }
 
 export function setSearchPhrase(payload) {
-
+  console.log(SEARCH_PHRASE);
   return {
     type: SEARCH_PHRASE,
     payload: payload
@@ -24,7 +24,7 @@ export function setSearchPhrase(payload) {
 }
 
 export function setCurrentCategory(payload) {
-
+  console.log(SET_CURRENT_CATEGORY_ID);
   return {
     type: SET_CURRENT_CATEGORY_ID,
     payload: payload

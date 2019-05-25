@@ -21,6 +21,6 @@ export default function reducer(state = initialState, action) {
                 current_category_id: action.payload};
 
     }
-
+    console.log("State init");
     return state;
 }
