@@ -13,5 +13,6 @@ export const RESET = "RESET";
 export const SELECTED_CONTENT = "SELECTED_CONTENT";
 export const SEARCH_PHRASE = "SEARCH_PHRASE";
 export const SET_CURRENT_CATEGORY_ID = "SET_CURRENT_CATEGORY_ID";
+export const SET_CATEGORY_PARENTS = "SET_CATEGORY_PARENTS";
 
 /* eslint-enable */

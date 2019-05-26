@@ -26,10 +26,14 @@ export default class JIApi {
         }
 
         const res = await this.getResource(purl);
-        // res.map((i) => {
 
-        // })
-        return res.map(this._transformSCatalog);
+        const parentData = (pid !== 0) ? await this.getResource(`/parents_id/${pid}`) : null;
+
+
+        return {
+            parents: (parentData) ? parentData.parents : null,
+            categories: res.map(this._transformSCatalog)
+        };
     };
 
 

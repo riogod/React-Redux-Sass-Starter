@@ -15,7 +15,7 @@ class Catalog extends Component {
 
     constructor(props) {
         super(props);
-        console.log("Construct");
+        // console.log("Construct");
         this.state = {
             itemList: null
         };
@@ -24,15 +24,17 @@ class Catalog extends Component {
 
     updateCategory() {
         const { search_phrase } = this.props.main_state;
-        const { setCurrentCategory } = this.props;
+        const { setCurrentCategory, setCategoryParents } = this.props;
         const categoryId = parseInt(this.props.match.params.number);
         const catalogId = (!isNaN(categoryId)) ? categoryId : 0;
-        console.log("ComponentUpdate func");
+        // console.log("ComponentUpdate func");
         setCurrentCategory(catalogId);
         this.jiData.getCatalogData(catalogId, search_phrase.toLowerCase()).then((item) => {
-            console.log("ComponentUpdate func async");
+
+            setCategoryParents(item.parents);
+            // console.log("ComponentUpdate func async", item);
             this.setState({
-                itemList: item
+                itemList: item.categories
             });
         });
     }
@@ -46,15 +48,12 @@ class Catalog extends Component {
     }
 
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log("getDerivedStateFromProps");
 
-    }
 
     componentDidMount()     {
         const { setViewContent } = this.props;
         this.updateCategory();
-        console.log("ComponentMount");
+        // console.log("ComponentMount");
         setViewContent("catalog");
 
 
@@ -62,7 +61,7 @@ class Catalog extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const categoryId = this.props.match.params.number;
-        console.log("ComponentUpdate");
+        // console.log("ComponentUpdate");
         if(categoryId !== prevProps.match.params.number || this.props.main_state.search_phrase !== prevProps.main_state.search_phrase) {
             this.updateCategory();
         }
@@ -70,8 +69,9 @@ class Catalog extends Component {
 
 
     render() {
+        console.log(this.props);
         // console.error("test");
-        console.log("Catalog render:", this.props);
+        // console.log("Catalog render:", this.props);
         return (
           <React.Fragment>
             <CatalogHeader/>
@@ -87,6 +87,7 @@ Catalog.propTypes = {
     selected_content: PropTypes.string,
     setViewContent: PropTypes.func,
     setCurrentCategory: PropTypes.func,
+    setCategoryParents: PropTypes.func,
     main_state: PropTypes.array,
     number: PropTypes.number,
     match: PropTypes.array,
